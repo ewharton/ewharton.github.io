@@ -171,7 +171,7 @@ div#notebook {
 
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[43]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
@@ -180,14 +180,14 @@ div#notebook {
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="kn">as</span> <span class="nn">sns</span>
 <span class="kn">import</span> <span class="nn">gensim</span>
 
-<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span><span class="p">,</span> <span class="n">TfidfVectorizer</span>
-<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfTransformer</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span><span class="p">,</span> <span class="n">TfidfVectorizer</span><span class="p">,</span><span class="n">TfidfTransformer</span>
+<span class="kn">import</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">as</span> <span class="nn">text</span> 
 <span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">decomposition</span>
 
 <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
 <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
-<span class="kn">import</span> <span class="nn">IPython.core.display</span> <span class="kn">as</span> <span class="nn">di</span>
+<span class="kn">from</span> <span class="nn">IPython.core</span> <span class="kn">import</span> <span class="n">display</span>
 
 <span class="o">%</span><span class="k">matplotlib</span> inline
 
@@ -205,63 +205,12 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">HTML</span><span class="p">(</span><span class="s">&#39;&#39;&#39;&lt;script&gt;</span>
-<span class="s">code_show=true; </span>
-<span class="s">function code_toggle() {</span>
-<span class="s"> if (code_show){</span>
-<span class="s"> $(&#39;div.input&#39;).hide();</span>
-<span class="s"> } else {</span>
-<span class="s"> $(&#39;div.input&#39;).show();</span>
-<span class="s"> }</span>
-<span class="s"> code_show = !code_show</span>
-<span class="s">} </span>
-<span class="s">$( document ).ready(code_toggle);</span>
-<span class="s">&lt;/script&gt;</span>
-<span class="s">&lt;form action=&quot;javascript:code_toggle()&quot;&gt;&lt;input type=&quot;submit&quot; value=&quot;Click here to hide / unhide the raw python code.&quot;&gt;&lt;/form&gt;&#39;&#39;&#39;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">Out[3]:</div>
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<script>
-code_show=true; 
-function code_toggle() {
- if (code_show){
- $('div.input').hide();
- } else {
- $('div.input').show();
- }
- code_show = !code_show
-} 
-$( document ).ready(code_toggle);
-</script>
-<form action="javascript:code_toggle()"><input type="submit" value="Click here to hide / unhide the raw python code."></form>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c"># This line will hide code by default when the notebook is exported as HTML</span>
-<span class="n">di</span><span class="o">.</span><span class="n">display_html</span><span class="p">(</span><span class="s">&#39;&lt;script&gt;jQuery(function() {if (jQuery(&quot;body.notebook_app&quot;).length == 0) { jQuery(&quot;.input_area&quot;).toggle(); jQuery(&quot;.prompt&quot;).toggle();}});&lt;/script&gt;&#39;</span><span class="p">,</span> <span class="n">raw</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">display</span><span class="o">.</span><span class="n">display_html</span><span class="p">(</span><span class="s">&#39;&#39;&#39;&lt;script&gt;jQuery(function() {if (jQuery(&quot;body.notebook_app&quot;).length == 0)</span>
+<span class="s">                { jQuery(&quot;.input_area&quot;).toggle(); jQuery(&quot;.prompt&quot;).toggle();}});&lt;/script&gt;&#39;&#39;&#39;</span><span class="p">,</span> <span class="n">raw</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -275,7 +224,8 @@ $( document ).ready(code_toggle);
 <div class="output_area"><div class="prompt"></div>
 
 <div class="output_html rendered_html output_subarea ">
-<script>jQuery(function() {if (jQuery("body.notebook_app").length == 0) { jQuery(".input_area").toggle(); jQuery(".prompt").toggle();}});</script>
+<script>jQuery(function() {if (jQuery("body.notebook_app").length == 0)
+                { jQuery(".input_area").toggle(); jQuery(".prompt").toggle();}});</script>
 </div>
 
 </div>
@@ -286,10 +236,14 @@ $( document ).ready(code_toggle);
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[531]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="k">def</span> <span class="nf">output_columns</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">rounding</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Changes columns name from &quot;python_naming&quot; to &quot;Output Names&quot;</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    
     <span class="c">#keep as a dataframe to perform vectorized string operations</span>
     <span class="n">names</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
     <span class="n">names</span><span class="o">.</span><span class="n">columns</span><span class="o">=</span> <span class="p">[</span><span class="s">&#39;temp&#39;</span><span class="p">]</span>
@@ -305,11 +259,11 @@ $( document ).ready(code_toggle);
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[532]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">posts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">&#39;usv_posts_cleaned.csv&#39;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s">&#39;utf8&#39;</span><span class="p">,</span><span class="n">parse_dates</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="n">posters</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">&quot;usv_posters_cleaned.csv&quot;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s">&quot;utf8&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython2"><pre><span class="n">posts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">&#39;data/usv_posts_cleaned.csv&#39;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s">&#39;utf8&#39;</span><span class="p">,</span><span class="n">parse_dates</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">posters</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">&quot;data/usv_posters_cleaned.csv&quot;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s">&quot;utf8&quot;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -319,7 +273,7 @@ $( document ).ready(code_toggle);
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[533]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">posts</span><span class="o">.</span><span class="n">date_created</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">posts</span><span class="o">.</span><span class="n">date_created</span><span class="p">)</span>
@@ -337,25 +291,32 @@ $( document ).ready(code_toggle);
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="What-is-this?">What is this?<a class="anchor-link" href="#What-is-this?">&#182;</a></h1><p>This is a brief analysis of <a href="https://www.USV.com">USV.com</a> post data from inception to Feb 2015. I explore top posters, look for patterns, favorite topics and and even some profiles on what different community members like to discuss.</p>
-<p>The data includes:</p>
+<h1 id="What-is-this?">What is this?<a class="anchor-link" href="#What-is-this?">&#182;</a></h1><p>This is an analysis of <a href="https://www.USV.com">USV.com</a> post data from inception to Feb 2015. For a few years, USV.com was my favorite place to hang out on the internet. There was once a section on the website called "Conversation". It looked like this:<br>
+<img src="images/USV-conversation-1.png" alt="Conversation">
+Any user could submit links to an article. The community would comment and upvote them. The links were ranked by comments, upvotes and time submitted. This started as a Hack Day project to understand who was contributing value to the community and topics the community liked to discuss.</p>
+<p>There are three sections:</p>
+<p><strong>Poster segments</strong>: Identify poster segments, who is in them and how they compare against each other.  <br />
+<strong>Post Patterns</strong>: Words and topics that are popular with the community, Trends in posting time. <br />
+<strong>Poster Profiles</strong> Words and topics that specific posters prefer.  <br /></p>
+<hr>
+<p>The data set of posts includes:</p>
 <ul>
 <li>the poster's twitter handle</li>
 <li>the post title</li>
 <li>the user submitted description (body text)</li>
 <li>the time of the post</li>
 <li>who upvoted it </li>
-<li>comments and upvotes recieved </li>
+<li>comments and upvotes received </li>
 </ul>
-<p>This is all publicly scrapable, but was given to me during a hack day.</p>
-<p>Below is an example of the data set, sorted by comment count:</p>
+<p>This is all publicly scrapable, but was given to me during a Hack Day.</p>
+<p>Below is an example of the post data set, sorted by comment count:</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[534]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">output_columns</span><span class="p">(</span><span class="n">posts</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s">&#39;comment_count&#39;</span><span class="p">,</span><span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">))</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -369,7 +330,7 @@ $( document ).ready(code_toggle);
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[534]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[17]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -384,6 +345,8 @@ $( document ).ready(code_toggle);
       <th>Comment Count</th>
       <th>Voted Users</th>
       <th>Body Text</th>
+      <th>Body Text Raw</th>
+      <th>Body Text Clean</th>
     </tr>
   </thead>
   <tbody>
@@ -396,6 +359,8 @@ $( document ).ready(code_toggle);
       <td>216</td>
       <td>[u'albertwenger', u'aweissman', u'ppearlman', ...</td>
       <td>We owe many of the innovations that we use eve...</td>
+      <td>We owe many of the innovations that we use eve...</td>
+      <td>We owe many of the innovations that we use eve...</td>
     </tr>
     <tr>
       <th>2540</th>
@@ -405,6 +370,8 @@ $( document ).ready(code_toggle);
       <td>21</td>
       <td>88</td>
       <td>[u'nickgrossman', u'aweissman', u'albertwenger...</td>
+      <td>Thoughts on why trust will be central to #winn...</td>
+      <td>Thoughts on why trust will be central to #winn...</td>
       <td>Thoughts on why trust will be central to #winn...</td>
     </tr>
     <tr>
@@ -416,6 +383,8 @@ $( document ).ready(code_toggle);
       <td>67</td>
       <td>[u'falicon', u'nickgrossman', u'kidmercury', u...</td>
       <td>Throwing the question about what to call the u...</td>
+      <td>Throwing the question about what to call the u...</td>
+      <td>Throwing the question about what to call the u...</td>
     </tr>
     <tr>
       <th>3045</th>
@@ -426,6 +395,8 @@ $( document ).ready(code_toggle);
       <td>67</td>
       <td>[u'nickgrossman', u'ron_miller', u'julien51', ...</td>
       <td>Hi Everyone --\nLast week we started experimen...</td>
+      <td>Hi Everyone --\nLast week we started experimen...</td>
+      <td>Hi Everyone --\nLast week we started experimen...</td>
     </tr>
     <tr>
       <th>4178</th>
@@ -435,6 +406,8 @@ $( document ).ready(code_toggle);
       <td>33</td>
       <td>62</td>
       <td>[u'billmcneely', u'annelibby', u'LonnyLot', u'...</td>
+      <td>Yesterday I was watching a proper football mat...</td>
+      <td>Yesterday I was watching a proper football mat...</td>
       <td>Yesterday I was watching a proper football mat...</td>
     </tr>
   </tbody>
@@ -453,14 +426,15 @@ $( document ).ready(code_toggle);
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Top-Posters">Top Posters<a class="anchor-link" href="#Top-Posters">&#182;</a></h2><p>Here are the stats for the top 10 posters determined by the number of conversation their posts sparked:</p>
+<h2 id="Poster-Segments">Poster Segments<a class="anchor-link" href="#Poster-Segments">&#182;</a></h2><hr>
+<h3 id="Top-Posters">Top Posters<a class="anchor-link" href="#Top-Posters">&#182;</a></h3><p>Here are the stats for the top 10 posters determined by the number of conversation their posts sparked:</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[535]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">poster_metrics</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;poster&#39;</span><span class="p">,</span><span class="s">&#39;post_count&#39;</span><span class="p">,</span><span class="s">&#39;mean_comments&#39;</span><span class="p">,</span><span class="s">&#39;conversations_sparked&#39;</span><span class="p">,</span>
@@ -476,7 +450,7 @@ $( document ).ready(code_toggle);
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[535]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[18]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -599,14 +573,14 @@ $( document ).ready(code_toggle);
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>All of the data on posters is calculated from the posts's above. I also manually added whether or not the post works at USV or worked at USV as of Feb 2015, which is when I did this. The only difference is that Brittany worked at USV in Feb 2015 and now works at May 2016.</p>
+<p>All of the data on posters is calculated from the posts's above. I also manually added whether or not the post works at USV or worked at USV as of Feb 2015, which is when I did this. The only difference is that Brittany worked at USV in Feb 2015 and now works at <a href="http://lattice.vc/">Lattice.vc</a> in May 2016.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[536]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c"># Highest ranked non-USVer posters</span>
@@ -624,14 +598,14 @@ $( document ).ready(code_toggle);
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Current-and-Former-USVers">Current and Former USVers<a class="anchor-link" href="#Current-and-Former-USVers">&#182;</a></h2><p>Here are the stats for all current USVers and alumni:</p>
+<h3 id="Current-and-Former-USVers">Current and Former USVers<a class="anchor-link" href="#Current-and-Former-USVers">&#182;</a></h3><p>Here are the stats for all current USVers and alumni:</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[537]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">output_columns</span><span class="p">(</span><span class="n">posters</span><span class="o">.</span><span class="n">ix</span><span class="p">[</span><span class="n">posters</span><span class="o">.</span><span class="n">ever_usver</span><span class="p">,</span><span class="n">poster_metrics</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s">&#39;relation_to_USV&#39;</span><span class="p">,</span><span class="s">&#39;post_count&#39;</span><span class="p">]))</span>
@@ -645,7 +619,7 @@ $( document ).ready(code_toggle);
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[537]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[20]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -810,7 +784,7 @@ $( document ).ready(code_toggle);
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[538]:</div>
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c"># Create a csv of all USVers</span>
@@ -827,7 +801,7 @@ $( document ).ready(code_toggle);
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Infrequent,-but-High-Value-Posters">Infrequent, but High Value Posters<a class="anchor-link" href="#Infrequent,-but-High-Value-Posters">&#182;</a></h2><p>This is a segment of posters that post infrequently, but have high per post engagment. This is a group that the community wants to hear more from. The cutoffs are:</p>
+<h3 id="Infrequent,-but-High-Value-Posters">Infrequent, but High Value Posters<a class="anchor-link" href="#Infrequent,-but-High-Value-Posters">&#182;</a></h3><p>This is a segment of posters that post infrequently, but have high per post engagment. This is a group that the community wants to hear more from. The cutoffs are:</p>
 <ul>
 <li>Averages more than 2 comments per post</li>
 <li>Posted between 5 and 15 times</li>
@@ -839,7 +813,7 @@ $( document ).ready(code_toggle);
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[539]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">output_columns</span><span class="p">(</span><span class="n">posters</span><span class="o">.</span><span class="n">ix</span><span class="p">[(</span><span class="n">posters</span><span class="o">.</span><span class="n">mean_comments</span><span class="o">&gt;</span><span class="mi">2</span><span class="p">)</span><span class="o">&amp;</span>
@@ -858,7 +832,7 @@ $( document ).ready(code_toggle);
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[539]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[22]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -1050,7 +1024,7 @@ $( document ).ready(code_toggle);
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[540]:</div>
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">posts</span> <span class="o">=</span> <span class="n">posts</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">posters</span><span class="p">[[</span><span class="s">&#39;poster&#39;</span><span class="p">,</span><span class="s">&#39;is_usver&#39;</span><span class="p">,</span><span class="s">&#39;ever_usver&#39;</span><span class="p">]],</span><span class="n">on</span><span class="o">=</span><span class="s">&#39;poster&#39;</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s">&#39;left&#39;</span><span class="p">)</span>
@@ -1066,7 +1040,7 @@ $( document ).ready(code_toggle);
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="USVers-vs-Civilians">USVers vs Civilians<a class="anchor-link" href="#USVers-vs-Civilians">&#182;</a></h2>
+<h3 id="USVers-vs-Civilians">USVers vs Civilians<a class="anchor-link" href="#USVers-vs-Civilians">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -1075,14 +1049,14 @@ $( document ).ready(code_toggle);
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This the average number of conversations sparked by posters based on their relationship to USV:</p>
+<p>This is the average number of conversations sparked by posters based on their relationship to USV:</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[818]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="s">&#39;relation_to_USV&#39;</span><span class="p">,</span><span class="s">&#39;conversations_sparked&#39;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">posters</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s">&quot;Blues_d&quot;</span><span class="p">,</span><span class="n">estimator</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">,</span><span class="n">ci</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
@@ -1610,7 +1584,7 @@ RU5ErkJggg==
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[819]:</div>
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">posters</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">&#39;relation_to_USV&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()[[</span><span class="s">&#39;poster&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s">&#39;poster&#39;</span><span class="p">:</span><span class="s">&#39;Number of Unique Posters&#39;</span><span class="p">})</span>
@@ -1624,7 +1598,7 @@ RU5ErkJggg==
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[819]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[25]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -1668,14 +1642,14 @@ RU5ErkJggg==
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>There are a lot more Civialians. Perhaps, it's not surpising their average was low. Below is the same plot, except it gets the maxium conversations sparked, instead of the average.</p>
+<p>There are a lot more Civialians. Perhaps, it's not surpising that their average was low. Below is the same plot, except it gets the maxium conversations sparked, instead of the average for each group.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[820]:</div>
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="s">&#39;relation_to_USV&#39;</span><span class="p">,</span><span class="s">&#39;conversations_sparked&#39;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">posters</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s">&quot;Blues_d&quot;</span><span class="p">,</span><span class="n">estimator</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">,</span><span class="n">ci</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
@@ -2214,7 +2188,7 @@ gg==
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>As you can see, some Civilians (or at least one) have sparked a comparable number of discussions to the USVers.</p>
+<p>As you can see, some Civilians (or at least one) have sparked a comparable number of discussions to the USVers. The average USVers does spark more conversations than the average civilian. However, the most active civilians are comparable to USVers.</p>
 
 </div>
 </div>
@@ -2224,7 +2198,17 @@ gg==
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Post-Enagagement-by-Time-Posted">Post Enagagement by Time Posted<a class="anchor-link" href="#Post-Enagagement-by-Time-Posted">&#182;</a></h2>
+<h2 id="Post-Patterns">Post Patterns<a class="anchor-link" href="#Post-Patterns">&#182;</a></h2><hr>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Post-Enagagement-by-Time-Posted">Post Enagagement by Time Posted<a class="anchor-link" href="#Post-Enagagement-by-Time-Posted">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -2240,7 +2224,7 @@ gg==
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[551]:</div>
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">posts</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">posts</span><span class="o">.</span><span class="n">date_created</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">hour</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[[</span><span class="s">&#39;upvotes&#39;</span><span class="p">,</span><span class="s">&#39;comment_count&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">legend</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
@@ -2258,11 +2242,11 @@ gg==
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[551]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[27]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.text.Text at 0x11627f7d0&gt;</pre>
+<pre>&lt;matplotlib.text.Text at 0x1104a6c50&gt;</pre>
 </div>
 
 </div>
@@ -3293,10 +3277,10 @@ AAADEbQBAAAAADAQQRsAAAAAAAP9H4xuC7FHxDFNAAAAAElFTkSuQmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[461]:</div>
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s">&#39;Counts and Upvotes by Hour - Product Hunt.png&#39;</span><span class="p">)</span> 
+<div class=" highlight hl-ipython2"><pre><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s">&#39;images/Counts-and-Upvotes-by-Hour-Product-Hunt.png&#39;</span><span class="p">)</span> 
 </pre></div>
 
 </div>
@@ -3307,7 +3291,7 @@ AAADEbQBAAAAADAQQRsAAAAAAAP9H4xuC7FHxDFNAAAAAElFTkSuQmCC
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[461]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[28]:</div>
 
 
 <div class="output_png output_subarea output_execute_result">
@@ -4183,14 +4167,14 @@ RESU8BhwEBEREREREVHCY8BBRERERERERAnv/wHo+Fq0u7rJpQAAAABJRU5ErkJggg==
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Product Hunt has s strong pattern based on time of day. This is because Product Hunt resets every day. USV.com does not.</p>
-<p>This could indicate an opportunity. If USV.com built in a predictable time cycle, it could lead to habitual visits, posts and discussions. Reddit and Hacker News show you don't need a daily leaderboard that restart at midnight. However, people should expect to see new content at some time interval. AVC does this very well.</p>
+<p>This could indicate an opportunity. If USV.com built in a predictable time cycle for new posts, it could lead to habitual visits, posts and discussions. Reddit and Hacker News show you don't need a daily leaderboard that restart at midnight. However, people should expect to see new content at some time interval. AVC does this very well.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[821]:</div>
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c">##</span>
@@ -4210,7 +4194,7 @@ RESU8BhwEBEREREREVHCY8BBRERERERERAnv/wHo+Fq0u7rJpQAAAABJRU5ErkJggg==
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="What-Does-The-Community-Like-To-Discuss?">What Does The Community Like To Discuss?<a class="anchor-link" href="#What-Does-The-Community-Like-To-Discuss?">&#182;</a></h1>
+<h3 id="Posts-The-Community-Likes-To-Discuss">Posts The Community Likes To Discuss<a class="anchor-link" href="#Posts-The-Community-Likes-To-Discuss">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -4219,14 +4203,14 @@ RESU8BhwEBEREREREVHCY8BBRERERERERAnv/wHo+Fq0u7rJpQAAAABJRU5ErkJggg==
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Before answering that, we must define "like to discuss". One way to define it is by number of comments. Here is the distribution of posts by the number of comments recieved:</p>
+<p>First, we must define "likes to discuss". One way to define it is by number of comments. Here is the distribution of posts by the number of comments recieved:</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[460]:</div>
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">posts</span><span class="o">.</span><span class="n">comment_count</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">posts</span><span class="o">.</span><span class="n">comment_count</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
@@ -4257,319 +4241,356 @@ RESU8BhwEBEREREREVHCY8BBRERERERERAnv/wHo+Fq0u7rJpQAAAABJRU5ErkJggg==
 
 
 <div class="output_png output_subarea ">
-<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAArcAAAIkCAYAAAAEbwOaAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
-AAALEgAACxIB0t1+/AAAIABJREFUeJzs3XtYVXW+x/HPgg2BgJJa5jUMTdM8COMMFzUt8jJdtA6V
-VnPMGyiYllqWZRIyXtLMy6ioCFPZ1JPlqOl0sprSNEws1DQzdzbp5Kh5Q+WqyD5/9LhPpOgG2Rv8
-8X49T8+jay/2/sIv9c1i7bWs3NxchwAAAAADeFX3AAAAAEBVIW4BAABgDOIWAAAAxiBuAQAAYAzi
-FgAAAMYgbgEAAGAM4haA0tPTFRkZWea/qKgodevWTXFxcZo6dar27dt3wccdPHhQkZGRGjduXKVe
-d9euXdq8ebNL++bk5CgyMlKzZs1ybhs+fLgiIyN19uzZSr3+peTl5emdd94ps23SpEmKjIyU3W6v
-8tdzhzNnzmjq1Knq2bOnunbtqjFjxrj0cVu3blVycrLi4uLUtWtXxcbGavjw4VqzZo0cDq4eeTmb
-N2/Wt99+W91jALWWrboHAFAzWJal2267TTfffLMkqbS0VPn5+bLb7Vq1apX+93//V1OnTlXnzp2d
-HxMUFKT4+HjdeOONFX69zz//XE899ZSefPJJRUZGXnb/xo0bKz4+XrfeemuZmS3LqvBru+KBBx7Q
-ddddpwcffNC5rXv37mrSpIkaNGjgltesam+99ZZWrlyp1q1bKyYm5rLrdPbsWb388stauXKl6tSp
-o5iYGN1+++3Kzc3V559/rtTUVK1bt04vvfSSvL29PfRZXF3effddzZgxQzNmzNAtt9xS3eMAtRJx
-C8CpW7duuvvuuy/YvmnTJj399NOaMGGC3njjDTVt2lSSFBgYqKFDh1bqtU6cOFGho4CNGzeu9GtV
-xokTJ3TdddeV2Xbbbbfptttu89gMV2rPnj2yLEsvvPCC2rRpc9n9X3rpJa1evVpdu3ZVcnKygoKC
-nI8VFRXp+eef14YNGzR9+nSNHz/enaNftU6cOOG2b7gAuIbTEgBcVnR0tIYNG6aCggJlZGRU2fPy
-I273OnPmjCSpXr16l933q6++0urVqxUaGqpp06aVCVtJ8vPz05///GfVq1dPa9as0eHDh90y89WO
-/6eB6seRWwAuefDBB7V48WJ9+umnmjBhgry8vHTw4EHdd9996tatm6ZPny5JOnfunDIzM/Xpp5/q
-wIED8vHxUZs2bfTII484T2mYNGmS/vGPf8iyLL3yyiuaNWuWFixYoMaNG+u+++7TwIEDVVhYqPfe
-e08+Pj4aO3asrr/+eiUmJqp///4aPXp0mdkOHDigefPm6csvv5TNZtPvf/97DR8+vMyP4VNSUvT+
-++/rjTfeUOvWrct8/B133KG6detq5cqVysnJUWJioizL0p49exQZGal77rlHL7zwQrnP8dFHH+nt
-t9+W3W6XZVlq1aqV+vXrpx49epR5ncjISPXu3VsPPvigFixYoG+//VZeXl7q1KmTkpKSXD6943Kv
-d/5zkH45daNv376yLEsrV67UDTfccNHnXLVqlSzL0oABA2SzXfyfBn9/f40fP17FxcWqU6dOhWb6
-9dfgnnvuUZ8+fTR//nx999138vf3V8+ePTVy5EgdOXJEs2fP1pYtW3TNNdcoMjJSo0ePVnBwsCQ5
-/5+Lj4/XzTffrIyMDP3www8KDg7W/fffr8GDB2vPnj2aO3eudu7cqaCgIHXv3l2PP/64rrnmmjKz
-fPrpp3rzzTedM7dt21YDBgxQdHR0pdYtMTFROTk5sixLTz/9dJmv+bfffqv09HTt2bNHJ0+e1PXX
-X6+uXbtq8ODBqlu3rivLDsBFxC0Al/j5+alt27basWOH9uzZo7Zt2150vxkzZmjFihWKiIhQ586d
-VVBQoI8++khjx47VjBkz1LVrV3Xv3l15eXn67LPPFB0drQ4dOqhJkybOo17vvfeeJOm///u/tX//
-fnXo0OGSRwqTkpIUFBSkuLg4/fvf/9ann36qL7/8UpmZmWrevLmkS5+f++vt58/tTU9PV4MGDRQX
-F+cM2Ys9x5w5c/Tmm2+qYcOG6t27tyRp48aNmjBhgvbs2aMRI0aU2d9utysxMVEdOnRQXFycvvvu
-O61bt07ffPONVq5cWW5YVuT1zn8OH374ofbv36/+/furbt26CgwMLPd5N23aJEmXPf/59ttvr9RM
-v7Zr1y6tXbtW0dHRiouL0/r167Vs2TKdPHlSW7ZsUbNmzRQXF6etW7fqgw8+UFFRkV566aUyz7Fu
-3Tq9+uqruuOOOxQeHq4PP/xQixcv1tGjR/X+++8rPDxcDzzwgDZu3Khly5bJ29tbTz75pPPjlyxZ
-ovT0dDVu3Fh33323vL299cknn2j06NF6+umnFRcXV+b1XFm3e+65R9Ivb8jr0aOHWrZsqcDAQO3f
-v1+PP/64LMtSbGys6tWrp127dumtt97Stm3b9Oqrr17yaw6gYohbAC47fw7q0aNHL/p4fn6+Vq1a
-pYiICKWlpTm3P/DAA3rkkUe0bNkyde3aVbfddptOnTql9evXKzo6Wv369ZP0y1E56ZfzFl9//XXn
-m9sklRu3DodDLVq00Lx585xhuHbtWk2cOFGzZ8/WzJkzK/Q5nj+393zcDhkypNx9t27dqjfffFNt
-27bV3LlznT/+z83NVVJSkpYuXarOnTurY8eOzo/54YcfNGLECP3P//yPc9tzzz2nTz75ROvXr1ds
-bGy5r7dt2zaXX2/o0KH67rvvtH//fj388MPlHrGVpOLiYp06dUqBgYG69tprXf5aVXSm8/71r39p
-5MiRevTRRyVJ/fr10/3336+1a9fq3nvv1fPPPy/pl58CPPTQQ1q/fr2Ki4vLHHn9/vvvNXXqVGds
-33nnnRoyZIj+/ve/KyEhQYMHD5YkDRw4UH369NHatWudcfvtt99qyZIlioiI0OzZs53PO2zYMMXH
-x2vWrFnq3Llzma+ZK+t299136z//+Y+2bt2qnj17Os/PzsjIUH5+vhYsWKCIiAjnx0+YMEEff/yx
-vv76a/3Xf/1Xhb7uAMrHObcAXObj4yPpl4i9GIfDIYfDoUOHDpWJ0ZYtW2r58uVlLuN1KU2bNi0T
-tpdiWZZGjhxZ5ohnr1691L59e2VlZen06dMuPU9lrFmzRpZl6YknnihzXmtwcLBGjBghh8Oh1atX
-l/kYX19fPfzww2W2xcTEyOFw6Keffrrk661evbrCr+eK81+j355q4IrKzOTj46OHHnrI+ftGjRqp
-cePGkqQ//elPzu3e3t7OKw4cOnSozHM0atSozFHkW2+9VTabTZZl6ZFHHnFuDwwMVEhIiE6cOOE8
-B3nVqlWSdMGpCgEBARo0aJDOnj2rDz74oMzrXcm6Sb/82di2bVuZbc8884w++OADwhaoYhy5BeCy
-goICSeVHUGBgoHr16qW1a9fq/vvvV1hYmKKiotSlSxeFhoa6/Drnr8bgCpvNpvbt21+wvX379tq1
-a5e+//57hYeHu/x8FXH+XM2LxUlYWJhzn19r3LjxBacenD9doKSkpMpfzxXnz2etzDcClZnp+uuv
-d36jdJ6/v7+kC9fe19dX0v+/Oe68Fi1aXPB6fn5+zv9+7XzAnjlzRr6+vtq9e7ekX865zcrKKrPv
-iRMnJP1ypYlfu5J1u+eee7R8+XItWrRIf//73xUTE6Po6GhFRkZe8MY9AFeOuAXgsvOnDTRp0qTc
-fSZOnKhbbrlFq1ev1tatW7V161YtWLBArVq10vjx48tcp7Y8v42TSzkfZr91PsCLiopcfq6Kys/P
-1zXXXHPR82QDAwPl5+d3weufj7VfO38e7+XeaV+Z13OFzWbT9ddfryNHjujYsWOXvI5vbm6upP//
-uldmpksdIb7cOcfnnY/h3/ptNF/M+Yh/4403Lvq4ZVkXhP6VrFtoaKj++te/6tVXX9Xnn3+u9957
-T6tWrdI111yj+++/X0888YS8vPhBKlBViFsALjl16pR++OEHBQYG6qabbip3P29vb/Xv31/9+/fX
-0aNHtXnzZn3yySfauHGjxowZo/fee69C8Xo5eXl5F91+/rzg8+9Ev1SIFBUVVeoIWkBAgA4cOKC8
-vLwL3qx15swZFRcXu3QZrprwejExMVq1apU2b96su+66q9z9li5dqr/97W8aNWqUHnnkEY9/DapC
-nTp15OXlpQ0bNnjsZhShoaFKTU3VuXPntHPnTm3atElr1qzR22+/rfr16+uxxx7zyBxAbcC3igBc
-smLFCp07d049evQo96oD+/bt07x587Rx40ZJUsOGDXX33Xdr5syZ6t69uzOQJVXZhe6Lior0448/
-ltnmcDi0Y8cO2Ww25+kQ548I/vZ84YMHD172x8rlOX8Vhe3bt1/w2LZt2+RwOC75jUBNer177rlH
-DodDr732ms6dO3fRfU6dOuU8F/X8VRU8/TWoCq1bt1Zpaanz9IRf27t3r+bPn6/s7OxKPffF/r9e
-uXKlZsyYIemXb/7CwsI0fPhwzZ49+6Ln4gK4MsQtgMvasmWLMjIyFBAQoIEDB5a7n4+Pj5YuXarF
-ixfr7Nmzzu3nzp3T4cOHZVmWrr/+ekn/H5u/PZeyMhYvXlzmiOzbb7+tffv2qWfPns6jxCEhIXI4
-HNqwYUOZj12yZMlFn9Nms112tvNBOH/+fOeP66VfztucO3euLMvSH//4x8p+Wh59vQ4dOqh37976
-8ccf9fTTT19wRPz48eN69tlndezYMd11113Obxo8/TWoCudnnjVrVpnP88yZM5o2bZqWLl1a6dNZ
-Lvb/9ddff613331X//znP8vs+5///EfSpU/zAVBxnJYAQNIvRzvXrVvn/AfX4XAoLy9P3333nbZt
-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
-oRISEtSvXz/t379fdrtdgwcP1qOPPqrhw4dr/fr17p4TAAAAuCyX4vbw4cPq2LGjJCkrK0uWZSk6
-OlqS1KRJE506dcp9EwIAAAAucilu69evr6NHj0qSNm3apJtuukkNGzaUJNntduevAQAAgOpkc2Wn
-mJgYzZs3T1u2bNEXX3yhxx9/XJL0t7/9TUuWLFFcXJxbhwQAAABc4dKR2zFjxigqKkrbt2/XAw88
-oIcffliStGrVKsXGxiohIcGtQwIAAACucOnIra+vr8aPH3/B9jfffFM2m02HDx9Wo0aNqnw4AAAA
-oCJcOnIbFRWlXbt2XbDdZrMpJydH/fr1q/LBAAAAgIoq98jtG2+8oaKiIkmSw+HQypUrlZWVdcF+
-27dvl83m0gFgAAAAwK3KrdLi4mKlp6dLkizL0qpVqy66X2BgoAYPHuye6QAAAIAKKDduhwwZooED
-B8rhcKhz585KT09X+/bty+zj7e3t9gEBAAAAV13yfILz8bp58+YLHispKdHJkydVr14990wGAAAA
-VJBLbygrLS1VZmam1q5dK0nKyclR79691atXL40cOVJ5eXluHRIAAABwhUtxm56ervT0dOXm5kqS
-XnnlFQUFBWnkyJH617/+pQULFrh1SAAAAMAVLsXthx9+qISEBPXr10/79++X3W7X4MGD9eijj2r4
-8OFav369u+cEAAAALsuluD18+LA6duwoScrKypJlWYqOjpYkNWnSRKdOnXLfhAAAAICLXIrb+vXr
-6+jRo5KkTZs26aabblLDhg0lSXa73flrAAAAoDq5dPeFmJgYzZs3T1u2bNEXX3yhxx9/XJL0t7/9
-TUuWLFFcXJxbhwQAAABc4dKR2zFjxigqKkrbt2/XAw88oIcffliStGrVKsXGxiohIcGtQwIAAACu
-cOnIra+vr8aPH3/B9jfffJNb7wIAAKDGcLlMi4uLtWrVKuXk5Oj06dMKDg5Wx44dde+998rPz8+d
-MwIAAAAucSluT506peHDh2vv3r264YYb1KBBA/3000/6+OOP9e6772rJkiUKCgpy96wAAADAJbkU
-t/Pnz9fRo0e1aNEi5yXBJGnr1q0aP368Fi5cqKefftptQwIAAACucOkNZZ999pmGDx9eJmwlKTw8
-XAkJCdzEAQAAADWCS3FbWFiopk2bXvSxpk2b6uTJk1U6FAAAAFAZLsVtSEiINmzYcNHHPvvsMzVr
-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
-EEIIIYSYMf4HsslP1Gz6NBoAAAAASUVORK5CYII=
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA/EAAAKbCAYAAAC92QodAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
+AAALEgAACxIB0t1+/AAAIABJREFUeJzs3XmclQXd///3gQFZhiU0zR1DUlG+LFksgnqHW2qWXzRc
+7q+5gYKSiok3ZRGSaVpqfhVQljTLHi7cglpfl0oRRcUCTXNh0oQ7b1cUdGZkn98f/picWByQGbxu
+ns/Hw8cDr3Odc33OzCUPX+daTmnRokU1AQAAAD71mmzuAQAAAID6EfEAAABQECIeAAAACkLEAwAA
+QEGIeAAAACgIEQ8AAAAFIeIBaFQTJ05Mr1696vzTu3fvHHDAARk4cGAuvfTSzJ8/f43nvfbaa+nV
+q1dGjhy5Udt97rnn8sQTT9Rr3Tlz5qRXr1656qqrapedeeaZ6dWrV5YvX75R21+fysrK3H777XWW
+XXzxxenVq1cqKio2+fYawrJly3LppZfmkEMOSf/+/TNixIh6PW/u3LkZPXp0Bg4cmP79+2fAgAE5
+88wzc88996Smxrfgfpwnnngizz///OYeA4BGVLa5BwBgy1MqlbL//vvnC1/4QpJk1apVqaqqSkVF
+RaZPn57/9//+Xy699NLst99+tc9p06ZNBg8enF133XWDt/foo4/mO9/5Ts4999z06tXrY9fffvvt
+M3jw4Oyzzz51Zi6VShu87fo45phj8tnPfjbHHnts7bIDDzwwO+ywQ7beeusG2eam9pvf/CbTpk1L
+586d07dv34/9PS1fvjw//elPM23atLRq1Sp9+/bNv/3bv2XRokV59NFHM3bs2Dz00EP5yU9+kqZN
+mzbSuyiWO+64I1dccUWuuOKK7LXXXpt7HAAaiYgHYLM44IADcsQRR6yx/LHHHssFF1yQiy66KL/6
+1a+y4447JknKy8tz+umnb9S23n333Q06qrv99ttv9LY2xrvvvpvPfvazdZbtv//+2X///Rtthk9q
+3rx5KZVK+f73v5899tjjY9f/yU9+krvvvjv9+/fP6NGj06ZNm9rHlixZku9973uZOXNmLr/88owa
+NaohRy+sd999t8E+WALg08vp9AB8qvTp0ydnnHFGqqurM3ny5E32uk7NbljLli1LkrRr1+5j1/3z
+n/+cu+++O506dcpll11WJ+CTpEWLFvnRj36Udu3a5Z577skbb7zRIDMXnX0aYMvkSDwAnzrHHnts
+brjhhjz44IO56KKL0qRJk7z22mv5xje+kQMOOCCXX355kmTlypWZMmVKHnzwwbz66qtp1qxZ9thj
+j5xwwgm1p+JffPHF+e1vf5tSqZQrr7wyV111VcaNG5ftt98+3/jGN3LyySfngw8+yF133ZVmzZrl
+/PPPz7bbbpuhQ4fmuOOOy3nnnVdntldffTXXXntt/vSnP6WsrCxf+tKXcuaZZ9Y5fXzMmDH53e9+
+l1/96lfp3Llzned/5StfSdu2bTNt2rTMmTMnQ4cOTalUyrx589KrV68ceeSR+f73v7/O13jggQdy
+6623pqKiIqVSKbvvvnsGDRqUgw8+uM52evXqlcMOOyzHHntsxo0bl+effz5NmjTJvvvum2HDhtX7
+soSP297q95B8eMnB17/+9ZRKpUybNi2f+9zn1vqa06dPT6lUykknnZSysrX/r0jLli0zatSoLF26
+NK1atdqgmT76MzjyyCNz1FFH5brrrsuLL76Yli1b5pBDDsnw4cPz1ltv5eqrr86TTz6ZrbbaKr16
+9cp5552X9u3bJ0ntPjd48OB84QtfyOTJk/Pyyy+nffv2Ofroo3Pqqadm3rx5ueaaa/Lss8+mTZs2
+OfDAA3P22Wdnq622qjPLgw8+mFtuuaV25j333DMnnXRS+vTps1G/t6FDh2bOnDkplUq54IIL6vzM
+n3/++UycODHz5s3L4sWLs+2226Z///459dRT07Zt2/r82gH4FBPxAHzqtGjRInvuuWeeeeaZzJs3
+L3vuueda17viiity5513pmfPntlvv/1SXV2dBx54IOeff36uuOKK9O/fPwceeGAqKyvz8MMPp0+f
+PunatWt22GGH2qOYd911V5Lkf//v/50FCxaka9eu6z3yO2zYsLRp0yYDBw7Mf/3Xf+XBBx/Mn/70
+p0yZMiU777xzkvVfP//R5auvvZ84cWK23nrrDBw4sDbY1/YaP//5z3PLLbdkm222yWGHHZYkeeSR
+R3LRRRdl3rx5Oeuss+qsX1FRkaFDh6Zr164ZOHBgXnzxxTz00EP561//mmnTpq0zoDdke6vfw/33
+358FCxbkuOOOS9u2bVNeXr7O133ssceS5GPvT/Bv//ZvGzXTRz333HO577770qdPnwwcODAzZszI
+bbfdlsWLF+fJJ5/MTjvtlIEDB2bu3Lm59957s2TJkvzkJz+p8xoPPfRQbrzxxnzlK19Jjx49cv/9
+9+eGG27I22+/nd/97nfp0aNHjjnmmDzyyCO57bbb0rRp05x77rm1z580aVImTpyY7bffPkcccUSa
+Nm2aP/7xjznvvPNywQUXZODAgXW2V5/f25FHHpnkwxsDHnzwwdltt91SXl6eBQsW5Oyzz06pVMqA
+AQPSrl27PPfcc/nNb36Tp556KjfeeON6f+YAfPqJeAA+lVZfI/7222+v9fGqqqpMnz49PXv2zPjx
+42uXH3PMMTnhhBNy2223pX///tl///3z3nvvZcaMGenTp08GDRqU5MOjrMmH1xX/8pe/rL3JXpJ1
+RnxNTU122WWXXHvttbUBfN999+UHP/hBrr766vzsZz/boPe4+tr71RF/2mmnrXPduXPn5pZbbsme
+e+6Za665pva09UWLFmXYsGG5+eabs99++6V79+61z3n55Zdz1lln5f/8n/9Tu+y73/1u/vjHP2bG
+jBkZMGDAOrf31FNP1Xt7p59+el588cUsWLAgxx9//DqPwCfJ0qVL895776W8vDyf+cxn6v2z2tCZ
+Vvv73/+e4cOH58QTT0ySDBo0KEcffXTuu+++fO1rX8v3vve9JB+e1fHNb34zM2bMyNKlS+scSf/b
+3/6WSy+9tPZDhYMOOiinnXZa/vM//zNDhgzJqaeemiQ5+eSTc9RRR+W+++6rjfjnn38+kyZNSs+e
+PXP11VfXvu4ZZ5yRwYMH56qrrsp+++1X52dWn9/bEUcckf/+7//O3Llzc8ghh9TeP2Hy5MmpqqrK
+uHHj0rNnz9rnX3TRRfn973+fv/zlL/lf/+t/bdDPHYBPF9fEA/Cp1KxZsyQfxvra1NTUpKamJq+/
+/nqd6N5tt90yderUOl8Ptz477rhjnYBfn1KplOHDh9c5gn3ooYdm7733zqxZs/L+++/X63U2xj33
+3JNSqZRzzjmnznXn7du3z1lnnZWamprcfffddZ7TvHnzHH/88XWW9e3bNzU1NfnHP/6x3u3dfffd
+G7y9+lj9M/rXU+TrY2NmatasWb75zW/W/vt2222X7bffPkny7//+77XLmzZtWnuH99dff73Oa2y3
+3XZ1zgrYZ599UlZWllKplBNOOKF2eXl5eTp27Jh333239h4B06dPT5I1TrFv3bp1TjnllCxfvjz3
+3ntvne19kt9b8uF/G0899VSdZRdeeGHuvfdeAQ/wP4Aj8QB8KlVXVydZd+yVl5fn0EMPzX333Zej
+jz463bp1S+/evdOvX7906tSp3ttZfff7+igrK8vee++9xvK99947zz33XP72t7+lR48e9X69DbH6
+Wuq1RVi3bt1q1/mo7bfffo1T5lef5r5ixYpNvr36WH29+cZ84LExM2277ba1Hwit1rJlyyRr/u6b
+N2+e5J836Vttl112WWN7LVq0qP3no1aH+rJly9K8efO88MILST68Jn7WrFl11n333XeTfHhn/4/6
+JL+3I488MlOnTs3111+f//zP/0zfvn3Tp0+f9OrVa40bCAJQTCIegE+l1ae777DDDutc5wc/+EH2
+2muv3H333Zk7d27mzp2bcePGZffdd8+oUaPqfM/7uvxrhK3P6gD9V6s/aFiyZEm9X2tDVVVVZaut
+tlrrdezl5eVp0aLFGttfHaUftfo6+4+7s/nGbK8+ysrKsu222+att97KwoULs/XWW69z3UWLFiX5
+5899Y2Za3xH/j7snwGqro/9f/euHA2uz+sOKX/3qV2t9vFQqrfGBxif5vXXq1Cm/+MUvcuONN+bR
+Rx/NXXfdlenTp2errbbK0UcfnXPOOSdNmjgRE6DIRDwAnzrvvfdeXn755ZSXl+fzn//8Otdr2rRp
+jjvuuBx33HF5++2388QTT+SPf/xjHnnkkYwYMSJ33XXXBkX6x6msrFzr8tXX7a++8/f6gmvJkiUb
+dUS0devWefXVV1NZWbnGTeOWLVuWpUuX1uvr3T4N2+vbt2+mT5+eJ554Iocffvg617v55pvz61//
+Ot/+9rdzwgknNPrPYFNo1apVmjRpkpkzZ6Zp06aNss1OnTpl7NixWblyZZ599tk89thjueeee3Lr
+rbemQ4cO+da3vtUocwDQMHwUC8Cnzp133pmVK1fm4IMPXudd3ufPn59rr702jzzySJJkm222yRFH
+HJGf/exnOfDAA2s/CEiyztfYUEuWLMkrr7xSZ1lNTU2eeeaZlJWV1Z7Gv/oI779ez//aa6997OnQ
+67L6rvVPP/30Go899dRTqampWe8HHp+m7R155JGpqanJTTfdlJUrV651nffee6/2WvHVd7Fv7J/B
+ptC5c+esWrWq9rT6j3rppZdy3XXXZfbs2Rv12mvbr6dNm5YrrrgiyYcfcnXr1i1nnnlmrr766rVe
+Kw9A8Yh4AD5VnnzyyUyePDmtW7fOySefvM71mjVrlptvvjk33HBDli9fXrt85cqVeeONN1IqlbLt
+ttsm+WdU/+u1zhvjhhtuqHOE/dZbb838+fNzyCGH1B7179ixY2pqajJz5sw6z500adJaX7OsrOxj
+Z1sdvtddd13taebJh9dVX3PNNSmVSvnqV7+6sW+rUbfXtWvXHHbYYXnllVdywQUXrHGGwzvvvJP/
++I//yMKFC3P44YfXfjjS2D+DTWH1zFdddVWd97ls2bJcdtllufnmmzf6Moy17dd/+ctfcscdd+QP
+f/hDnXX/+7//O8n6L08BoBicTg9Ao6upqclDDz1UGxY1NTWprKzMiy++mKeeeiotWrTIJZdcku22
+226dr7HDDjvkmGOOydSpU3Pcccdlv/32S9OmTfPEE0/k5ZdfzqBBg7LNNtskSe3Xd91+++1ZvHhx
+jjjiiI06zb5Vq1aZO3duTj755Oy7777529/+lscffzw77bRTvv3tb9eu99WvfjU33HBDfvOb3+TV
+V1/NzjvvnD/96U958803s8suu9T50GH1fAsWLMill16abt26rfUU8x49euSEE07Ib37zm5xwwgnp
+379/kmTmzJl55513ctJJJ9X5arVPqqG3993vfjeVlZV59NFH87WvfS39+vXLdtttl9dffz2PPfZY
+qqqq0rt374wcObLRZmoIPXv2rJ159X7aokWLPPLII3n11Vdz6KGH1n493Ib63Oc+l5qamkyaNCkv
+vvhijjvuuJx88sl5+OGHc9FFF+WBBx7ILrvskjfeeCN//OMf0759+zp30wegmEQ8AI2uVCpl5syZ
+dY5Ut2jRIttvv30GDRqUQYMGrfWu8aVSqc4pxOeff35222233H333fnd736XFStWZLfddst3v/vd
+HHXUUbXrdevWLccff3zuueee3H777dltt93Ss2fPNV5vfdtKPrx52jXXXJOf/exnueOOO9KyZct8
+4xvfyNChQ+vc9K59+/aZMGFC7anSf/7zn/PlL385l156aS6++OI1vsJs5MiRueKKK/Lb3/42r7/+
++jqvEz/nnHOy55575vbbb899992XsrKyfOELX8iFF16YAw444GPnr89jG7u91a9bX1tttVV++tOf
+ZsaMGZk+fXqeffbZPPTQQ9lqq62yxx575Kijjsphhx32iWb6uJ9BfWzMa/zr8nPOOSd77bVXbr/9
+9tx///0plUrZeeedc+GFF+brX//6Bm3vo48NGDAgjz32WB5++OHccccd6dWrV/bdd99MmjQpU6ZM
+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
+vP/++ymVSrnxxhszceLELFu2LFdccUVatGjRkHMCAADAFq9ed6f/7W9/m8svvzwHH3xwrrrqqtTU
+1CRJvvrVr+aZZ57JxIkTG3RIAAAAoJ5H4m+++eZ885vfzPnnn5+VK1fWLj/ooIPy1ltv5dZbb83w
+4cMbbEgAAACgnkfi//GPf6Rfv35rfWyPPfbIwoULN+lQAAAAwJrqFfEdOnTISy+9tNbHXn755XTo
+0GGTDgUAAACsqV4Rf8ghh2TixIm5995788EHHyRJSqVSnn322UyZMiUDBgxo0CEBAACAel4Tf8YZ
+Z+Sll17K6NGjUyqVkiRDhgzJ0qVL07179wwZMqRBhwQAAADqGfHNmjXLVVddldmzZ+fJJ5/M4sWL
+U15enp49e2a//farDXsAAACg4dT7e+KT5Mtf/nK+/OUvN9QsAAAAwHrUO+L/+te/5qabbsrcuXNT
+WVmZ9u3bZ999981pp52Wjh07NuCIAAAAQFLPiJ89e3bOPffcfOYzn8kBBxyQDh06ZOHChXn00Ufz
+yCOPZMKECdljjz0aelYAAADYotUr4idMmJAvfvGL+dnPfpbmzZvXLq+urs4555yTq6++OuPHj2+w
+IQEAAIB6fsVcRUVFjj/++DoBnyStWrXKSSedlGeffbZBhgMAAAD+qV4Rv9122+W1115b62PV1dXZ
+euutN+lQAAAAwJrqFfHDhw/P9ddfnwcffLDO8j//+c8ZN25czjrrrAYZDgAAAPindV4T36tXrzrf
+/15TU5NRo0alrKws7du3T2VlZZYsWZKysrJcc801OfjggxtlYAAAANhSrTPiTzvttDoRDwAAAGxe
+64z4IUOGNOYcAAAAwMeo11fMJcmSJUvyyiuv5P3331/r41/60pc22VAAAADAmuoV8bNnz85FF12U
+9957LzU1NbXLS6VSampqUiqV8vjjjzfYkAAAAEA9I/6qq65Khw4dMmrUqLRr166hZwIAAADWol4R
+/49//CM//elP06tXr4aeBwAAAFiHen1PfOfOnfP666839CwAAADAetTrSPz555+fiy66KEmy9957
+p2XLlmuss+OOO27ayQAAAIA66hXxK1euzLJly3LppZeucx03tgMAAICGVa+Iv/zyy1NWVpZhw4al
+Q4cODT0TAAAAsBb1ivj58+fn0ksvTb9+/Rp6HgAAAGAd6nVju5122ikffPBBQ88CAAAArEe9jsQP
+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
+dEaMGJHLLrss//zP/9yqzZQpUzJ37tzcfPPNOffcczNx4sR3fE0vv/xybrjhhpx//vkZPXp0pk+f
+nv/8z/9Mkjz77LMZOnRoSqVSvvKVr6Suri7PPvvsPrezcuXK9OrVK1OmTNlrXW1tbaZNm5bzzz8/
+27Ztqyx/8skn8/nPfz6jRo3KJz7xidxxxx35/e9/X1nf1mN5MO/Bq6++munTp2f06NEZNWpUpk+f
+ntdee62yfuPGjRk6dGieeuqpzJ49O+edd15Gjx6d2bNn53e/+12SZN68efne976XjRs3pq6urvL+
+fP/7388VV1yRj370o/nYxz6WmTNn5je/+c07vjcAsD+EeAA6nBtuuCHHHHNM5s+ff8DT6vc1Df6t
+t97Kfffdl/Hjx+eOO+7I1q1bM2vWrMyePTtjx47NPffck3K5nNmzZ2fXrl2VfuVyOQsWLMjll1+e
+u+66KzU1NbnhhhtaTUOfMWNGVq1alcsuuyz33ntvhgwZknnz5mXVqlWtanjyySdzxBFH5L777svV
+V1+9z9qfeeaZTJgwIXv27MmcOXMyZ86cvPnmm5kwYUJ+/etfp3///lm+fHnK5XI+9alPZfny5enf
+v/8+t/Xv//7vGTJkSI444oh9rh8xYkQmTpyY2traJMmyZcsye/bsDBgwIHfddVcmTpyYp556KpMn
+T87u3bsP+li2pd/rr7+eCRMm5O23387cuXMzd+7cbN68ORMnTsybb77Z6vUsWLAgRx99dO66665c
+e+21Wb16de69994kydVXX526uroce+yxWb58ec4555z8/Oc/z9y5czNq1Kg88MADmTlzZn71q1+5
+bh6Ag9al2gUAwOFWU1OTm2++OdOmTcuXv/zlTJ48+aC219jYmC9+8YsZPnx4kuSVV17J4sWLM2vW
+rIwdOzZJMmnSpMyaNasSlpP/+0Jg1qxZGT16dJJk8ODBueSSS7JixYrcfffdWbt2bdasWZPbbrst
+H//4x5MkQ4cOTXNzc5YsWZKLLroo3bp1S5J06dIls2bNqjzfl4cffjgnnXRSFi1aVPki4iMf+Ugu
+ueSSPPLII7nzzjtzxhlnJEmOO+64fOhDH9rndhoaGtLY2JgTTjhhv47P1q1b89hjj+Xiiy/O3//9
+31eWn3rqqZk0aVL+8R//MZ/97GcP6li2pV99fX26du2axYsXV75sGDZsWC6++OIsX748M2fOrNRa
+V1eX6dOnJ0mGDBmSl19+OU8++WSS5MQTT0yfPn3StWvXyjF74okn0r1794wbNy5du3atHNOf/OQn
+2blzZ3r06LFfxw4A/pgz8QB0SMOHD8+FF16YlStX5pe//OVBb+/MM8+sPD766KOTpBKIk6R3794p
+l8vZunVrZVmXLl0qAT5JunXrlmHDhuW5555Lkvz0pz9NqVTKiBEjsmfPnsrfyJEjs3Xr1lZn7E8+
++eQ/GeB37dqVl19+OWPGjGk1k6C2tjYjR47Mz372s/1+rZ07d06S7NmzZ7/ar1u3Lk1NTfnYxz7W
+avnAgQPzF3/xF3tN2W/LsWxLv2eeeSaDBg1Kjx49Kse2S5cuGTx4cJ5++ulW2/6rv/qrVs+PP/74
+NDY2vuNr/vCHP5xdu3blsssuy4MPPphnnnkmp59+eiZPnizAA3BQnIkHoMOaPn161q5dm3nz5mXF
+ihUHta2ampq9lr1bWOvTp89ey44++ujKdeRbtmxJuVzOmDFj9mpXKpXy1ltv7fe+tm7dmnK5XAm3
+/98xxxzT6tr1d9OzZ88ceeSRlfsC7Mvu3buzc+fO9OnTJ1u2bKnsZ1/7/uMw3pZj2ZZ+DQ0Neeqp
+pypn7/+gVCpVzp7/Qffu3fdqkyQtLS3p1GnvcyJnnHFGHnzwwTz++OP5xje+ka997Wvp1atX/uZv
+/ibXXHPNu74WAHgnQjwAHVbPnj0zc+bMfPGLX8yyZcv2Wl8qldLS0tJq2c6dOw/Z/vcVnDdt2lQJ
+97W1tenevXvq6+tTLpf3aru/09mT/3utpVIpmzdv3mvd22+/nd69ex9A5f83vfxnP/tZmpqa9gq8
+SfKv//qvufPOO7No0aLKGfBNmzbllFNOadVu06ZNGTBgwAHt+1Dp2bNnBg8enCuvvHKfx/dgDR48
+OIMHD05TU1Oee+65fOtb38ry5cvTr1+/nHfeeYd8fwB0DKbTA9ChjRw5MhdccEFWrFhROWP8BzU1
+NXvd4Oz5559v877++IZ4u3btajWNfceOHfnJT36SwYMHJ0nOPvvs7N69O01NTenfv3/l7/XXX8+j
+jz56QF8odO/ePaeffnr+7d/+rVVg3bZtW3784x9n4MCBB/Ra/vZv/zYNDQ1ZsmTJXusaGhry2GOP
+5fjjj8/gwYNzxhlnpFu3bvn+97/fqt1zzz2X3/72twe872TvY9mWfoMGDcqrr76afv36tTq+q1at
+qlzvvr/++Gz84sWL8/nPfz5J0rVr13zkIx/JzJkzUy6Xs3HjxjbVDgCJM/EAkBtvvDFr167d6yz1
+iBEj8tWvfjWPPfZYzjzzzKxevbpyvXpb/PHZ3i5dumTevHmZOnVqjjzyyHz1q1/N7t27K3eXP+ec
+czJw4MDMmDEj48ePz6mnnppf/vKXWbp0ac4888wcf/zxB7T/qVOn5u/+7u9y3XXX5XOf+1waGxuz
+YsWKNDY2/smfpduXAQMGZNKkSVm6dGleeeWVfPKTn8zRRx+dV155JY8//ni2bNmSRx55JJ06dUqv
+Xr1y5ZVXZvny5enatWs++tGP5r//+79TX1+fvn375qKLLjqgfSd7H8u29JswYUImTJiQG264IZ/5
+zGfSo0ePPPHEE/nBD35wwL9x37Nnz2zevDlr1qzJBz7wgdTV1WXlypWZO3duLrzwwrS0tOQb3/hG
+jjjiiJx77rltqh0AEiEegA5mX2dwe/XqlZtuuikzZ85stf6qq65KQ0NDHn/88TQ3N2fkyJH50pe+
+lBkzZrzrNvdn30cddVS+8IUv5OGHH65MK3/kkUfSt2/fSvsHHngg9fX1WblyZTZv3pxjjjkml156
+6V6he39qGDJkSB566KE8+uijmT17drp27ZpBgwZl7ty5Oe2001pta3+2d9VVV6V///755je/mYUL
+F2bLli057rjjMnTo0IwbN67VdP+JEyfm2GOPzde//vU88cQT6d27d8aMGZPJkye3ut68rceyLf36
+9euX+vr6PPLII7nttttSLpdzyimn5I477mh1w8F32vb/Xz527Ng8/fTTmTFjRq655ppceeWVufPO
+O7NixYrMmjUr5XI5/fv3z0MPPZSTTjppv2oFgH0pNTQ0HPqLwAAAAIBDzjXxAAAAUBBCPAAAABSE
+EA8AAAAFIcQDAABAQQjxAAAAUBBCPAAAABSEEA8AAAAFIcQDAABAQfwv5vxhbI7ppswAAAAASUVO
+RK5CYII=
 "
 >
 </div>
@@ -4585,14 +4606,14 @@ EEIIIYSYMf4HsslP1Gz6NBoAAAAASUVORK5CYII=
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>As can be seen above, most posts get 0 or very few comments. The skew is very postive (23+). Let's define a popular post as one that sparks a discussion by getting at least 5 comments</p>
+<p>As can be seen above, most posts get 0 or very few comments. The skew is very postive (23+). Let's define a popular post as one that sparks a discussion by getting at least 5 comments.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[90]:</div>
+<div class="prompt input_prompt">In&nbsp;[31]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c"># posts.comment_count.value_counts(normalize=True).round(4).sort_index()*100</span>
@@ -4606,7 +4627,7 @@ EEIIIYSYMf4HsslP1Gz6NBoAAAAASUVORK5CYII=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[822]:</div>
+<div class="prompt input_prompt">In&nbsp;[32]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">top5_cutoff</span> <span class="o">=</span> <span class="n">posts</span><span class="o">.</span><span class="n">comment_count</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="o">.</span><span class="mi">95</span><span class="p">)</span>
@@ -4620,7 +4641,7 @@ EEIIIYSYMf4HsslP1Gz6NBoAAAAASUVORK5CYII=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[558]:</div>
+<div class="prompt input_prompt">In&nbsp;[33]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">posts</span><span class="p">[</span><span class="s">&#39;sparked_conversation&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">posts</span><span class="o">.</span><span class="n">comment_count</span><span class="o">&gt;</span><span class="n">top5_cutoff</span>
@@ -4634,7 +4655,7 @@ EEIIIYSYMf4HsslP1Gz6NBoAAAAASUVORK5CYII=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[559]:</div>
+<div class="prompt input_prompt">In&nbsp;[34]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">posts</span><span class="p">[[</span><span class="s">&#39;title&#39;</span><span class="p">,</span><span class="s">&#39;body_text&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">posts</span><span class="p">[[</span><span class="s">&#39;title&#39;</span><span class="p">,</span><span class="s">&#39;body_text&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">)</span>
@@ -4650,15 +4671,15 @@ EEIIIYSYMf4HsslP1Gz6NBoAAAAASUVORK5CYII=
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Now, I will use the TF-IDF* weighting of one and two word phrases that appear in at least 20 posts titles.</p>
-<p>*TF-IDF, is just the word counts in each title relative to how rare the words are across titles</p>
+<p><strong>Optional Explanation of Math</strong></p>
+<p>Now, I will use the TF-IDF* weighting of one and two word phrases that appear in at least 20 posts titles. TF-IDF, is just the word counts in each title relative to how rare the words are across all titles.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[830]:</div>
+<div class="prompt input_prompt">In&nbsp;[72]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">vec</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">ngram_range</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="n">min_df</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">stop_words</span><span class="o">=</span><span class="s">&#39;english&#39;</span><span class="p">)</span>
@@ -4672,7 +4693,7 @@ EEIIIYSYMf4HsslP1Gz6NBoAAAAASUVORK5CYII=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[831]:</div>
+<div class="prompt input_prompt">In&nbsp;[73]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">transformer</span> <span class="o">=</span> <span class="n">TfidfTransformer</span><span class="p">()</span>
@@ -4689,15 +4710,15 @@ EEIIIYSYMf4HsslP1Gz6NBoAAAAASUVORK5CYII=
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Now, I fit a logistic regression model using l1 regularization. This uses the tfidf words to predict whether or not the post will spark a conversation. Logistic regression is not the most predictive model, but it is interpretable, which is the goal of this.</p>
-<p>Note that data set is  small to do proper cross validation. Instead, I am using regularization and requring a phrase to appear 20+ times to reduce overfitting. Even so, I wouldn't try to make predictions with this model.</p>
+<p>Next, I fit a logistic regression model using l1 regularization. This uses the tfidf words to predict whether or not the post will spark a conversation. Logistic regression is not the most predictive model, but it is interpretable, which is the goal of this.</p>
+<p>Note that data set is small (relative to the number of features), which makes it hard to do proper cross validation. Instead, I am using regularization and requiring that a phrase appears 20+ times to reduce overfitting. Even so, I wouldn't try to make predictions with this model.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[832]:</div>
+<div class="prompt input_prompt">In&nbsp;[74]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">y</span> <span class="o">=</span> <span class="n">posts</span><span class="o">.</span><span class="n">sparked_conversation</span>
@@ -4727,7 +4748,7 @@ EEIIIYSYMf4HsslP1Gz6NBoAAAAASUVORK5CYII=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[833]:</div>
+<div class="prompt input_prompt">In&nbsp;[75]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">vocab</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="n">vec</span><span class="o">.</span><span class="n">get_feature_names</span><span class="p">(),</span>
@@ -4746,6 +4767,7 @@ EEIIIYSYMf4HsslP1Gz6NBoAAAAASUVORK5CYII=
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p><strong> Popular Title Words</strong></p>
 <p>The higher the coef, the more likely a word is to spark a conversation. Here are the top 20 words:</p>
 
 </div>
@@ -4753,7 +4775,7 @@ EEIIIYSYMf4HsslP1Gz6NBoAAAAASUVORK5CYII=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[835]:</div>
+<div class="prompt input_prompt">In&nbsp;[39]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">df_vocab</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;word&#39;</span><span class="p">,</span><span class="s">&#39;coef&#39;</span><span class="p">]</span>
@@ -4768,7 +4790,7 @@ EEIIIYSYMf4HsslP1Gz6NBoAAAAASUVORK5CYII=
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[835]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[39]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -4897,16 +4919,16 @@ EEIIIYSYMf4HsslP1Gz6NBoAAAAASUVORK5CYII=
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Topics-on-USV.com">Topics on USV.com<a class="anchor-link" href="#Topics-on-USV.com">&#182;</a></h1><p>Above we looked at the titles. Now, let's check out the post description. By using <a href="https://en.wikipedia.org/wiki/Non-negative_matrix_factorization">non-negative matrix factorization</a>, I tried to pull out topics.</p>
+<h3 id="Topics-on-USV.com">Topics on USV.com<a class="anchor-link" href="#Topics-on-USV.com">&#182;</a></h3><p>Above we looked at the titles. Now, let's check out the post description. By using <a href="https://en.wikipedia.org/wiki/Non-negative_matrix_factorization">non-negative matrix factorization</a>, I tried to pull out topics.</p>
 <p>The post descriptions have too few words for perfectly reliable topic models. Many topics were sensitive to hyperparamters. Even with all of the noise, there were still some topics that stood out.</p>
-<p>Below are some topics and their top 10 words. I did not use tags to find these. This came soley from which words appear together in descriptions.</p>
+<p>Below are some topics and their top 10 words. I did not use tags to find these. This came solely from which words appear together in descriptions.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[839]:</div>
+<div class="prompt input_prompt">In&nbsp;[40]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">posts</span><span class="p">[</span><span class="s">&#39;body_text_raw&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">posts</span><span class="o">.</span><span class="n">body_text</span>
@@ -4922,7 +4944,7 @@ EEIIIYSYMf4HsslP1Gz6NBoAAAAASUVORK5CYII=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[840]:</div>
+<div class="prompt input_prompt">In&nbsp;[44]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">custom_stopwords</span><span class="o">=</span> <span class="p">[</span><span class="s">&#39;looks&#39;</span><span class="p">,</span><span class="s">&#39;look&#39;</span><span class="p">,</span><span class="s">&#39;read&#39;</span><span class="p">,</span><span class="s">&#39;great&#39;</span><span class="p">,</span><span class="s">&#39;good&#39;</span><span class="p">,</span><span class="s">&#39;dont&#39;</span><span class="p">,</span><span class="s">&#39;really&#39;</span><span class="p">,</span><span class="s">&#39;done&#39;</span><span class="p">,</span><span class="s">&#39;kik&#39;</span><span class="p">,</span><span class="s">&#39;lets&#39;</span><span class="p">,</span>
@@ -4939,7 +4961,7 @@ EEIIIYSYMf4HsslP1Gz6NBoAAAAASUVORK5CYII=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[841]:</div>
+<div class="prompt input_prompt">In&nbsp;[45]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c"># This step performs the vectorization,</span>
@@ -4960,7 +4982,7 @@ EEIIIYSYMf4HsslP1Gz6NBoAAAAASUVORK5CYII=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[842]:</div>
+<div class="prompt input_prompt">In&nbsp;[46]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c">#trial and error got me to 45</span>
@@ -4977,7 +4999,7 @@ EEIIIYSYMf4HsslP1Gz6NBoAAAAASUVORK5CYII=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[843]:</div>
+<div class="prompt input_prompt">In&nbsp;[47]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">n_top_words</span> <span class="o">=</span> <span class="mi">10</span>
@@ -4994,7 +5016,7 @@ EEIIIYSYMf4HsslP1Gz6NBoAAAAASUVORK5CYII=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[844]:</div>
+<div class="prompt input_prompt">In&nbsp;[48]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">topic_names</span> <span class="o">=</span> <span class="p">[</span>
@@ -5014,10 +5036,11 @@ EEIIIYSYMf4HsslP1Gz6NBoAAAAASUVORK5CYII=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[845]:</div>
+<div class="prompt input_prompt">In&nbsp;[49]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="k">for</span> <span class="n">count</span><span class="p">,</span><span class="n">i</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">topic_words</span><span class="p">):</span>
+<div class=" highlight hl-ipython2"><pre><span class="c">#outputs all named topics and its top 10 words</span>
+<span class="k">for</span> <span class="n">count</span><span class="p">,</span><span class="n">i</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">topic_words</span><span class="p">):</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">topic_names</span><span class="p">[</span><span class="n">count</span><span class="p">],</span><span class="nb">int</span><span class="p">):</span>
         <span class="k">pass</span>
     <span class="k">else</span><span class="p">:</span>
@@ -5130,21 +5153,7 @@ Top words: product, building, products, amazing, hunt, team, design, important, 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[730]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">test</span><span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">decomp</span><span class="o">.</span><span class="n">components_</span><span class="p">)</span>
-<span class="n">test</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">vocab</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[731]:</div>
+<div class="prompt input_prompt">In&nbsp;[51]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">posts</span><span class="p">[</span><span class="s">&#39;clean_upvotes&#39;</span><span class="p">]</span><span class="o">=</span> <span class="n">posts</span><span class="o">.</span><span class="n">voted_users</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;^u|</span><span class="se">\&#39;</span><span class="s">|\[|\]&#39;</span><span class="p">,</span><span class="s">&#39;&#39;</span><span class="p">)</span>
@@ -5158,7 +5167,7 @@ Top words: product, building, products, amazing, hunt, team, design, important, 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[732]:</div>
+<div class="prompt input_prompt">In&nbsp;[52]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">users_votes</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">users_votes</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">to_series</span><span class="p">()</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;^u&#39;</span><span class="p">,</span><span class="s">&#39;&#39;</span><span class="p">)</span>
@@ -5171,7 +5180,7 @@ Top words: product, building, products, amazing, hunt, team, design, important, 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[733]:</div>
+<div class="prompt input_prompt">In&nbsp;[53]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">posts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">posts</span><span class="p">,</span><span class="n">users_votes</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -5184,7 +5193,7 @@ Top words: product, building, products, amazing, hunt, team, design, important, 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[846]:</div>
+<div class="prompt input_prompt">In&nbsp;[54]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">model</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">penalty</span><span class="o">=</span><span class="s">&#39;l2&#39;</span><span class="p">)</span>
@@ -5224,7 +5233,7 @@ Top words: product, building, products, amazing, hunt, team, design, important, 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[847]:</div>
+<div class="prompt input_prompt">In&nbsp;[55]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">community_topics</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">topic_names</span><span class="p">),</span><span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
@@ -5240,7 +5249,7 @@ Top words: product, building, products, amazing, hunt, team, design, important, 
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[847]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[55]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -5409,325 +5418,19 @@ Top words: product, building, products, amazing, hunt, team, design, important, 
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="User-Interests">User Interests<a class="anchor-link" href="#User-Interests">&#182;</a></h2><p>Here I use the title and topics to predict if a user will upvote something. By doing that, we get a profile of topics and title words a user likely finds interesting. Here are some examples:</p>
+<h3 id="Finding-Posts-on-a-Topic">Finding Posts on a Topic<a class="anchor-link" href="#Finding-Posts-on-a-Topic">&#182;</a></h3><p>We can use these topic models to find posts on a topic. For example, "Bitcoin and Blockchain" is a clear topic. These are the "most Bitcoin" posts. These posts are sorted by how strongly it's description is associated the Bitcoin Topic. This could be used for a recommendation engine. However, not all topics came through as cleanly as Bitcoin.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[848]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="c"># Remake the tfidf word matric with a threshold of 10 instead of 20 counts. </span>
-<span class="n">vec_user_profiles</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">(</span><span class="n">ngram_range</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">min_df</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">stop_words</span><span class="o">=</span><span class="s">&#39;english&#39;</span><span class="p">)</span>
-<span class="n">X_words</span> <span class="o">=</span> <span class="n">vec_user_profiles</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">posts</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[859]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="k">def</span> <span class="nf">get_user_profile</span><span class="p">(</span><span class="n">user</span><span class="p">):</span>
-    <span class="n">model_topics</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">penalty</span><span class="o">=</span><span class="s">&#39;l2&#39;</span><span class="p">)</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">users_votes</span><span class="p">[</span><span class="n">user</span><span class="p">]</span>
-    <span class="n">model_topics</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">doctopic</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
-    
-    <span class="n">vocab_topics</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="n">topic_names</span><span class="p">,</span><span class="n">model_topics</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">df_vocab_topics</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">vocab_topics</span><span class="p">)</span>
-    <span class="n">df_vocab_topics</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;Topic&#39;</span><span class="p">,</span><span class="s">&#39;coef&#39;</span><span class="p">]</span>
-    <span class="n">df_vocab_topics</span> <span class="o">=</span> <span class="n">df_vocab_topics</span><span class="p">[(</span><span class="n">df_vocab_topics</span><span class="o">.</span><span class="n">coef</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span><span class="o">&amp;</span>
-                                      <span class="p">(</span><span class="n">df_vocab_topics</span><span class="o">.</span><span class="n">Topic</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">!=</span><span class="nb">int</span><span class="p">)]</span>
-    
-    <span class="n">model_words</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">penalty</span><span class="o">=</span><span class="s">&#39;l2&#39;</span><span class="p">)</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">users_votes</span><span class="p">[</span><span class="n">user</span><span class="p">]</span>
-    <span class="n">model_words</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_words</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
-    
-    <span class="n">vocab</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="n">vec_user_profiles</span><span class="o">.</span><span class="n">get_feature_names</span><span class="p">(),</span><span class="n">model_words</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-
-    <span class="n">df_vocab</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">vocab</span><span class="p">)</span>
-    <span class="n">df_vocab</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;word&#39;</span><span class="p">,</span><span class="s">&#39;coef&#39;</span><span class="p">]</span>
-    <span class="n">df_vocab</span> <span class="o">=</span> <span class="n">df_vocab</span><span class="p">[</span><span class="n">df_vocab</span><span class="o">.</span><span class="n">coef</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span>
-    
-    <span class="k">print</span> <span class="n">user</span>
-    <span class="k">print</span>
-    <span class="k">print</span> <span class="s">&quot;Favorite Topics: &quot;</span> <span class="o">+</span>\
-    <span class="s">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df_vocab_topics</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s">&#39;coef&#39;</span><span class="p">,</span><span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)[</span><span class="s">&#39;Topic&#39;</span><span class="p">])</span>
-    <span class="k">print</span> 
-    <span class="k">print</span> <span class="s">&quot;Favorite Words: &quot;</span> <span class="o">+</span>\
-    <span class="s">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df_vocab</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s">&#39;coef&#39;</span><span class="p">,</span><span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">25</span><span class="p">)[</span><span class="s">&#39;word&#39;</span><span class="p">])</span>
-    <span class="k">return</span> <span class="bp">None</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[862]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">get_user_profile</span><span class="p">(</span><span class="s">&#39;nickgrossman&#39;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>nickgrossman
-
-Favorite Topics: Net Neutrality, Internt Access, Data Privacy and Security, USV Community, AVC Posts, Video, Test Post, Open Source, HTML Tags, Markets
-
-Favorite Words: nytimes, comcast, fcc, techdirt, hunch, ignore, test, grossman, neutrality, nick, slow, internet, obama, privacy, anti, washington, health, verizon, surveillance, cities, uber, free, snowden, trust, policy
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[863]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">get_user_profile</span><span class="p">(</span><span class="s">&#39;albertwenger&#39;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>albertwenger
-
-Favorite Topics: Open Source, Web Services, Technology and Patents, Startup Building, Internt Access, Net Neutrality, AVC Posts, Data Privacy and Security, AVC or Continuations, Mobile
-
-Favorite Words: continuations, hiring, foursquare, com, wired, update, human, medium, wattpad, revolution, longer, hunt, org, brand, income, computer, age, 500, network, analysis, notes, mit, marketplaces, news, platform
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[861]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">get_user_profile</span><span class="p">(</span><span class="s">&#39;BenedictEvans&#39;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>BenedictEvans
-
-Favorite Topics: Markets, Mobile, Internt Access, Tech Job Market, Product Development, Big 4 Tech Co&apos;s
-
-Favorite Words: android, benedict, price, really, mobile, twitter, instagram, self, iphone, youtube, use, scale, evans, dead, facebook, foundation, value, technology, networks, does, platform, social, google
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[864]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">get_user_profile</span><span class="p">(</span><span class="s">&#39;fredwilson&#39;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>fredwilson
-
-Favorite Topics: AVC or Continuations, AVC Posts, USV Community, Startup Building, Bitcoin and Blockchain, iOS vs Android, Long Read, Web Services, Business Models, Net Neutrality
-
-Favorite Words: avc, vc, cliche, techcrunch, panel, continuations, coinbase, week, kik, kickstarter, wsj, talk, friday, blog, albert, evans, twitter, benedict, foursquare, looking, thoughts, capitalism, sessions, atlantic, duckduckgo
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[873]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">get_user_profile</span><span class="p">(</span><span class="s">&#39;aweissman&#39;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>aweissman
-
-Favorite Topics: Long Read, Data Privacy and Security, App Store, Big 4 Tech Co&apos;s, Open Source, Internt Access, Startup Building, Mobile, USV Community
-
-Favorite Words: music, yorker, medium, youtube, blog, angellist, com, peer, banks, app, evans, circle, ben, fiber, code, life, indie, funding, ve, beat, billion, bloomberg, free, economist, watch
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[872]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">get_user_profile</span><span class="p">(</span><span class="s">&#39;jmonegro&#39;</span><span class="p">)</span>
-<span class="k">print</span> 
-<span class="k">print</span> <span class="s">&quot;The words worked much better than the topics for Joel&quot;</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>jmonegro
-
-Favorite Topics: 
-
-Favorite Words: decentralized, blockchain, plan, distributed, wireless, communication, secure, messaging, based, market, 000, paypal, firm, paid, devices, bitcoin, post, stock, hard, email, change, sharing, trends, time, washington
-
-The words worked much better than the topics for Joel
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[865]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">get_user_profile</span><span class="p">(</span><span class="s">&#39;pointsnfigures&#39;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>pointsnfigures
-
-Favorite Topics: Bitcoin and Blockchain, Tech Job Market, Startup Ecosystems, Venture Capital
-
-Favorite Words: chicago, drones, entrepreneurship, tech, good, bitcoin, football, women, robots, corporate, trading, robot, life, competition, federal, old, big, drone, act, make, invest, angel, social, times, wrong
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[866]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">get_user_profile</span><span class="p">(</span><span class="s">&#39;kidmercury&#39;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>kidmercury
-
-Favorite Topics: Bitcoin and Blockchain, Big 4 Tech Co&apos;s, Technology and Patents, Internt Access, Community Feedback, Net Neutrality, Video, Markets, Data Privacy and Security, Mobile
-
-Favorite Words: verge, hedge, techcrunch, com, news, amazon, zero, insider, state, bitcoin, technology, disruptive, nsa, currency, code, bank, man, google, says, computers, wants, samsung, china, bloomberg, wsj
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[867]:</div>
+<div class="prompt input_prompt">In&nbsp;[56]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">doctopic_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">doctopic</span><span class="p">)</span>
+<span class="n">doctopic_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">topic_names</span>
+<span class="n">posts_topics</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">posts</span><span class="p">,</span><span class="n">doctopic_df</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -5737,43 +5440,7 @@ Favorite Words: verge, hedge, techcrunch, com, news, amazon, zero, insider, stat
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[816]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">doctopic_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">topic_names</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[817]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">posts_topics</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">posts</span><span class="p">,</span><span class="n">doctopic_df</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Finding-Posts-on-a-Topic">Finding Posts on a Topic<a class="anchor-link" href="#Finding-Posts-on-a-Topic">&#182;</a></h2><p>"Bitcoin and blockchain" is a very clear topic. These are the "most Bitcoin" posts. The final column is how strongly that post is associated the topic. This could be used for a recommendation engine. However, not all topics came through as clearly.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[874]:</div>
+<div class="prompt input_prompt">In&nbsp;[57]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">topic</span> <span class="o">=</span> <span class="s">&quot;Bitcoin and Blockchain&quot;</span>
@@ -5788,7 +5455,7 @@ Favorite Words: verge, hedge, techcrunch, com, news, amazon, zero, insider, stat
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[874]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[57]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -5954,12 +5621,27 @@ Favorite Words: verge, hedge, techcrunch, com, news, amazon, zero, insider, stat
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Poster-Profiles">Poster Profiles<a class="anchor-link" href="#Poster-Profiles">&#182;</a></h2><hr>
+<p>Here I use the title and topics to predict if a poster will upvote or share something.</p>
+<p>That creates a profile of topics and title words a poster likely finds interesting.</p>
+<p>Here are some examples:</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[58]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre> 
+<div class=" highlight hl-ipython2"><pre><span class="c"># Remake the tfidf word matrix with a threshold of 10 instead of 20 counts. </span>
+<span class="n">vec_user_profiles</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">(</span><span class="n">ngram_range</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">min_df</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">stop_words</span><span class="o">=</span><span class="s">&#39;english&#39;</span><span class="p">)</span>
+<span class="n">X_words</span> <span class="o">=</span> <span class="n">vec_user_profiles</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">posts</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -5969,13 +5651,293 @@ Favorite Words: verge, hedge, techcrunch, com, news, amazon, zero, insider, stat
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[61]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre> 
+<div class=" highlight hl-ipython2"><pre><span class="k">def</span> <span class="nf">get_user_profile</span><span class="p">(</span><span class="n">user</span><span class="p">):</span>
+    <span class="n">model_topics</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">penalty</span><span class="o">=</span><span class="s">&#39;l2&#39;</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">users_votes</span><span class="p">[</span><span class="n">user</span><span class="p">]</span>
+    <span class="n">model_topics</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">doctopic</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+    
+    <span class="n">vocab_topics</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="n">topic_names</span><span class="p">,</span><span class="n">model_topics</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">df_vocab_topics</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">vocab_topics</span><span class="p">)</span>
+    <span class="n">df_vocab_topics</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;topic&#39;</span><span class="p">,</span><span class="s">&#39;coef&#39;</span><span class="p">]</span>
+    <span class="n">df_vocab_topics</span> <span class="o">=</span> <span class="n">df_vocab_topics</span><span class="p">[(</span><span class="n">df_vocab_topics</span><span class="o">.</span><span class="n">coef</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span><span class="o">&amp;</span>
+                                      <span class="p">(</span><span class="n">df_vocab_topics</span><span class="o">.</span><span class="n">topic</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">!=</span><span class="nb">int</span><span class="p">)]</span>
+    
+    <span class="n">model_words</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">penalty</span><span class="o">=</span><span class="s">&#39;l2&#39;</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">users_votes</span><span class="p">[</span><span class="n">user</span><span class="p">]</span>
+    <span class="n">model_words</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_words</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+    
+    <span class="n">vocab</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="n">vec_user_profiles</span><span class="o">.</span><span class="n">get_feature_names</span><span class="p">(),</span><span class="n">model_words</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+    <span class="n">df_vocab</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">vocab</span><span class="p">)</span>
+    <span class="n">df_vocab</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;word&#39;</span><span class="p">,</span><span class="s">&#39;coef&#39;</span><span class="p">]</span>
+    <span class="n">df_vocab</span> <span class="o">=</span> <span class="n">df_vocab</span><span class="p">[</span><span class="n">df_vocab</span><span class="o">.</span><span class="n">coef</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span>
+    
+    <span class="k">print</span> <span class="n">user</span>
+    <span class="k">print</span>
+    <span class="k">print</span> <span class="s">&quot;Favorite Topics: &quot;</span> <span class="o">+</span>\
+    <span class="s">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df_vocab_topics</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s">&#39;coef&#39;</span><span class="p">,</span><span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)[</span><span class="s">&#39;topic&#39;</span><span class="p">])</span>
+    <span class="k">print</span> 
+    <span class="k">print</span> <span class="s">&quot;Favorite Words: &quot;</span> <span class="o">+</span>\
+    <span class="s">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df_vocab</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s">&#39;coef&#39;</span><span class="p">,</span><span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">25</span><span class="p">)[</span><span class="s">&#39;word&#39;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="bp">None</span>
 </pre></div>
 
 </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[62]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span class="n">get_user_profile</span><span class="p">(</span><span class="s">&#39;nickgrossman&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>nickgrossman
+
+Favorite Topics: Net Neutrality, Internt Access, Data Privacy and Security, USV Community, AVC Posts, Video, Test Post, Open Source, HTML Tags, Markets
+
+Favorite Words: nytimes, comcast, fcc, techdirt, hunch, ignore, test, grossman, neutrality, nick, slow, internet, obama, privacy, anti, washington, health, verizon, surveillance, cities, uber, free, snowden, trust, policy
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[63]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span class="n">get_user_profile</span><span class="p">(</span><span class="s">&#39;albertwenger&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>albertwenger
+
+Favorite Topics: Open Source, Web Services, Technology and Patents, Startup Building, Internt Access, Net Neutrality, AVC Posts, Data Privacy and Security, AVC or Continuations, Mobile
+
+Favorite Words: continuations, hiring, foursquare, com, wired, update, human, medium, wattpad, revolution, longer, hunt, org, brand, income, computer, age, 500, network, analysis, notes, mit, marketplaces, news, platform
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[64]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span class="n">get_user_profile</span><span class="p">(</span><span class="s">&#39;BenedictEvans&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>BenedictEvans
+
+Favorite Topics: Markets, Mobile, Internt Access, Tech Job Market, Product Development, Big 4 Tech Co&apos;s
+
+Favorite Words: android, benedict, price, really, mobile, twitter, instagram, self, iphone, youtube, use, scale, evans, dead, facebook, foundation, value, technology, networks, does, platform, social, google
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[65]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span class="n">get_user_profile</span><span class="p">(</span><span class="s">&#39;fredwilson&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>fredwilson
+
+Favorite Topics: AVC or Continuations, AVC Posts, USV Community, Startup Building, Bitcoin and Blockchain, iOS vs Android, Long Read, Web Services, Business Models, Net Neutrality
+
+Favorite Words: avc, vc, cliche, techcrunch, panel, continuations, coinbase, week, kik, kickstarter, wsj, talk, friday, blog, albert, evans, twitter, benedict, foursquare, looking, thoughts, capitalism, sessions, atlantic, duckduckgo
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[66]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span class="n">get_user_profile</span><span class="p">(</span><span class="s">&#39;aweissman&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>aweissman
+
+Favorite Topics: Long Read, Data Privacy and Security, App Store, Big 4 Tech Co&apos;s, Open Source, Internt Access, Startup Building, Mobile, USV Community
+
+Favorite Words: music, yorker, medium, youtube, blog, angellist, com, peer, banks, app, evans, circle, ben, fiber, code, life, indie, funding, ve, beat, billion, bloomberg, free, economist, watch
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[67]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span class="n">get_user_profile</span><span class="p">(</span><span class="s">&#39;jmonegro&#39;</span><span class="p">)</span>
+<span class="k">print</span> 
+<span class="k">print</span> <span class="s">&quot;The words worked much better than the topics for Joel&quot;</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>jmonegro
+
+Favorite Topics: 
+
+Favorite Words: decentralized, blockchain, plan, distributed, wireless, communication, secure, messaging, based, market, 000, paypal, firm, paid, devices, bitcoin, post, stock, hard, email, change, sharing, trends, time, washington
+
+The words worked much better than the topics for Joel
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[68]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span class="n">get_user_profile</span><span class="p">(</span><span class="s">&#39;pointsnfigures&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>pointsnfigures
+
+Favorite Topics: Bitcoin and Blockchain, Tech Job Market, Startup Ecosystems, Venture Capital
+
+Favorite Words: chicago, drones, entrepreneurship, tech, good, bitcoin, football, women, robots, corporate, trading, robot, life, competition, federal, old, big, drone, act, make, invest, angel, social, times, wrong
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[69]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span class="n">get_user_profile</span><span class="p">(</span><span class="s">&#39;kidmercury&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>kidmercury
+
+Favorite Topics: Bitcoin and Blockchain, Big 4 Tech Co&apos;s, Technology and Patents, Internt Access, Community Feedback, Net Neutrality, Video, Markets, Data Privacy and Security, Mobile
+
+Favorite Words: verge, hedge, techcrunch, com, news, amazon, zero, insider, state, bitcoin, technology, disruptive, nsa, currency, code, bank, man, google, says, computers, wants, samsung, china, bloomberg, wsj
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
